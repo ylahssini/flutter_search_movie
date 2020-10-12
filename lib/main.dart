@@ -12,7 +12,7 @@ class MovieSearch extends StatelessWidget {
     return MaterialApp(
       title: 'Movie Search',
       theme: ThemeData(
-        primaryColor: Colors.black,
+        primaryColor: Colors.amber,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(title: 'Movie search'),

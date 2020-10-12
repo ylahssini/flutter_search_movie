@@ -38,10 +38,13 @@ class _HomeState extends State<HomePage> {
                 style: TextStyle(color: Colors.white)
               ),
             ),
-             TextField(
+            TextField(
               maxLength: TextField.noMaxLength,
               onChanged: _handleChange,
               style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.amber)),
+              )
               // decoration: const InputDecoration(border)
             )
           ],
