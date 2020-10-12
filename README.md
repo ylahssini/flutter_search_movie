@@ -1,6 +1,6 @@
-# movie_search
+# Flutter Search movie
 
-A new Flutter project.
+This a simple search movie app. This is my first flutter app and i'm excited to learn how design and develop a Flutter application.
 
 ## Getting Started
 
