@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
+import 'package:movie_search/src/model/movie.dart';
 import 'package:movie_search/src/utils/debounce.dart';
-
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -14,10 +13,12 @@ class HomePage extends StatefulWidget {
 
 class _HomeState extends State<HomePage> {
   final _debouncer = Debounce(400);
+  Future<Movie> movies;
 
   void _handleChange(value) {
     _debouncer.run(() {
-      print('value: $value');
+      movies = getMovies(value);
+      print(movies);
     });
   }
 
@@ -45,7 +46,21 @@ class _HomeState extends State<HomePage> {
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.amber)),
               )
-              // decoration: const InputDecoration(border)
+            ),
+            Center(
+              child: FutureBuilder<Movie>(
+                future: movies,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Text(snapshot.data.title);
+                  } else if (snapshot.hasError) {
+                    return Text("${snapshot.error}");
+                  }
+
+                  // By default, show a loading spinner.
+                  return CircularProgressIndicator();
+                },
+              ),
             )
           ],
         ),
